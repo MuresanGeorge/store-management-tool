@@ -17,8 +17,6 @@ public class CartDetail {
     private Product product;
     @Column
     private int quantity;
-    @Column
-    private LocalDateTime createdAt;
 
     public Long getId() {
         return id;
@@ -51,14 +49,4 @@ public class CartDetail {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    //you can make an API cart refresh -> after 24 hours to empty the cart
 }

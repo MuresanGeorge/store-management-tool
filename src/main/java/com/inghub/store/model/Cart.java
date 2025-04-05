@@ -22,6 +22,8 @@ public class Cart {
     private boolean ordered;
     @Column
     private LocalDateTime orderDate;
+    @Column
+    private LocalDateTime createdAt;
 
     public Long getId() {
         return id;
@@ -54,4 +56,13 @@ public class Cart {
     public void setOrderDate(LocalDateTime orderDate) {
         this.orderDate = orderDate;
     }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+    //TODO: make an API for cart refresh -> after 24 hours to empty the cart
 }
