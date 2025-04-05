@@ -3,9 +3,10 @@ package com.inghub.store.model;
 import jakarta.persistence.*;
 
 public class Inventory {
+
     @Id
     private Long id;
-    @Column(name = "stock")
+    @Column
     private int stock;
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
@@ -34,4 +35,5 @@ public class Inventory {
     public void setProduct(Product product) {
         this.product = product;
     }
+
 }

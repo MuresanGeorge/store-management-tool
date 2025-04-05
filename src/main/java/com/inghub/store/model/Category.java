@@ -1,12 +1,12 @@
 package com.inghub.store.model;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Columns;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Category {
+
     @Id
     @GeneratedValue
     private Long id;
@@ -59,4 +59,6 @@ public class Category {
     public void setProducts(List<Product> products) {
         this.products = products;
     }
+
+
 }

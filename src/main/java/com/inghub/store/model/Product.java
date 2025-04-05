@@ -3,7 +3,9 @@ package com.inghub.store.model;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class Product {
 
@@ -20,6 +22,9 @@ public class Product {
     private BigDecimal price;
     @Column
     private String imageUrl;
+
+    @OneToMany(mappedBy = "product")
+    Set<CartDetail> cartDetails = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -67,6 +72,14 @@ public class Product {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public Set<CartDetail> getCartDetails() {
+        return cartDetails;
+    }
+
+    public void setCartDetails(Set<CartDetail> cartDetails) {
+        this.cartDetails = cartDetails;
     }
 
     @Override
