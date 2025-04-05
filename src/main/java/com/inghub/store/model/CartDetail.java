@@ -2,12 +2,12 @@ package com.inghub.store.model;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
-
+@Entity
+@Table(name = "cart_details")
 public class CartDetail {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     @JoinColumn(name = "cart_id")

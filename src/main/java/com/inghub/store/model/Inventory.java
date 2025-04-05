@@ -2,6 +2,8 @@ package com.inghub.store.model;
 
 import jakarta.persistence.*;
 
+@Entity
+@Table(name = "inventories")
 public class Inventory {
 
     @Id
