@@ -46,19 +46,33 @@ public class ProductService {
         Inventory productInventory = new Inventory();
         productInventory.setStock(productDto.getStock());
         productInventory.setProduct(productToBeReturned);
-        inventoryRepository.save(productInventory);
+        Inventory inventory = inventoryRepository.save(productInventory);
 
-        return productConverter.convertToDto(productToBeReturned);
+        ProductDto dtoToBeReturned = productConverter.convertToDto(productToBeReturned);
+        dtoToBeReturned.setCategoryName(categoryOfProduct.getName());
+        dtoToBeReturned.setStock(inventory.getStock());
+        return dtoToBeReturned;
     }
 
     public ProductDto getProduct(Long id) {
         Product productToBeReturned = productRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Product with id " + id + " not found"));
-        return productConverter.convertToDto(productToBeReturned);
+        ProductDto dtoToBeReturned = productConverter.convertToDto(productToBeReturned);
+        dtoToBeReturned.setCategoryName(productToBeReturned.getCategory().getName());
+        //TODO: solve the stock problem
+        return dtoToBeReturned;
     }
 
     public List<ProductDto> getProductsByCategory(Long categoryId) {
         List<Product> productsToBeReturned = productRepository.findByCategoryId(categoryId);
-        return productsToBeReturned.stream().map(productConverter::convertToDto).toList();
+        if (!productsToBeReturned.isEmpty()) {
+            String categoryName = productsToBeReturned.get(0).getCategory().getName();
+        }
+        return productsToBeReturned.stream().map(product -> {
+            ProductDto productDto = productConverter.convertToDto(product);
+            productDto.setCategoryName(product.getCategory().getName());
+            return productDto;
+        }).toList();
+        //TODO: solve the stock
     }
 
     @Transactional
