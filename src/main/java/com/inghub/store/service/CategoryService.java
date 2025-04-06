@@ -20,7 +20,7 @@ public class CategoryService {
 
     public CategoryDto addCategory(CategoryDto categoryDto) {
         if (categoryRepository.findByName(categoryDto.name()).isPresent()) {
-            LOGGER.info("log for signaling the issue ...");
+            LOGGER.info("log for signaling the issue a...");
             throw new DuplicateNameException("Category with name " + categoryDto.name() + " exist");
         }
         Category categoryToBeAdded = new Category();
@@ -30,4 +30,5 @@ public class CategoryService {
 
         return new CategoryDto(categoryToBeReturned.getName(), categoryToBeReturned.getDescription());
     }
+    //TODO: continue here
 }
