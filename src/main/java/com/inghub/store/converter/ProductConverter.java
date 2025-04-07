@@ -9,8 +9,7 @@ public class ProductConverter {
 
     public ProductDto convertToDto(Product product) {
         ProductDto productDto = new ProductDto();
-        productDto.setId(productDto.getId());
-        productDto.setCategoryName(productDto.getCategoryName());
+        productDto.setId(product.getId());
         productDto.setName(product.getName());
         productDto.setPrice(product.getPrice());
         productDto.setDescription(product.getDescription());
